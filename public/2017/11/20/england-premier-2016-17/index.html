@@ -1,116 +1,75 @@
-<!doctype html>
-
+<!DOCTYPE html>
 <html lang="en-us">
-
-<head>
+  <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>A Hugo website</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="">
-    <meta name="generator" content="Hugo 0.30.2" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab|Ruda" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="/css/styles.css" />
-</head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.30.2" />
 
-<body>
-    <div id="container">
-        <header>
-            <h1>
-                <a href="/">A Hugo website</a>
-            </h1>
 
-            <ul id="social-media">
-                
-        
-                
-        
-                
-        
-                
-        
-                
-        
-                
-            </ul>
-            
-        </header>
+<title>England Premier 2016/17 Part One, loading data - A Hugo website</title>
+<meta property="og:title" content="England Premier 2016/17 Part One, loading data - A Hugo website">
 
-        
-<nav>
-    <ul>
-        
-        <li>
-            <a class="" href="/about/">
-                <i class="fa-li fa  fa-lg"></i><span>About</span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="" href="https://github.com/rstudio/blogdown">
-                <i class="fa-li fa  fa-lg"></i><span>GitHub</span>
-            </a>
-        </li>
-        
-        <li>
-            <a class="" href="https://twitter.com/rstudio">
-                <i class="fa-li fa  fa-lg"></i><span>Twitter</span>
-            </a>
-        </li>
-        
-    </ul>
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/rstudio/blogdown">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/rstudio">Twitter</a></li>
+    
+  </ul>
 </nav>
-        
-        <main>
+
+      </header>
 
 
+<main class="content" role="main">
 
-
-<article>
-
-    <h1>England Premier 2016/17 Part One, loading data</h1>
-
+  <article class="article">
     
-        <aside>
-    <ul>
-        <li>
-            <time class="post-date" datetime="2017-11-20T00:00:00Z">Nov 20, 2017</time>
-        </li>
-        
-        
-        <li>
-            Categories: 
-            <em>
-                
-                    
-                    <a href="/categories/england/">england</a>
-                
-                    , 
-                    <a href="/categories/premier-league/">premier league</a>
-                
-            </em>
-        </li>
-        
-
-        
-        <li>
-            <em>
-                
-                    
-                    <a href="/tags/exploratory-analysis/">#exploratory analysis</a>
-                
-            </em>
-        </li>
-        
-
-        <li>7 min read</li>
-    </ul>
-</aside>
+    <span class="article-duration">7 min read</span>
     
 
-    <p>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk. Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.Before we proceed any further I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.</p>
+    <h1 class="article-title">England Premier 2016/17 Part One, loading data</h1>
+
+    
+    <span class="article-date">2017/11/20</span>
+    
+
+    <div class="article-content">
+      <p>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk. Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.Before we proceed any further I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
 <p>I then use the read_csv function from the readrpackge to load the dataset intomy session.Note: the data must be within the samedirectory asthe markdown document in orderfor it to be loaded in.</p>
 <pre class="r"><code>df.prem16_17 &lt;- read_csv(file = &quot;E0.csv&quot;)</code></pre>
@@ -208,33 +167,46 @@
 ## $ PSCD       &lt;dbl&gt; 3.16, 3.15, 3.54, 3.50, 6.50, 3.38, 3.83, 3.44, 3.6...
 ## $ PSCA       &lt;dbl&gt; 2.89, 3.86, 2.16, 1.92, 14.50, 3.70, 4.91, 2.68, 1....</code></pre>
 
+    </div>
+  </article>
 
-</article>
+  
 
 
-<section class="post-nav">
-    <ul>
-        
-        <li>
-            <a href="/2016/12/30/a-plain-markdown-post/"><i class="fa fa-chevron-circle-left"></i> A Plain Markdown Post</a>
-        </li>
-        
-        
-    </ul>
-</section>
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
     
 
 
 
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
 
-</main>
-    <footer>
-        <h6> | 
-            Rendered by <a href="https://gohugo.io" title="Hugo">Hugo</a> |
-            <a href="/index.xml">Subscribe</a></h6>
-    </footer>
-</div>
-<script src="/js/scripts.js"></script>
-</body>
 
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
 </html>
+
