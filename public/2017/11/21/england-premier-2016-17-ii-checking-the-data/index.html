@@ -69,7 +69,7 @@
     
 
     <div class="article-content">
-      <p>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immedistely see if there is anything untoward going on, or if there is anything we think we may want to deal with later.</p>
+      <p>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immediately see if there is anything untoward going on, or if there is anything we think we may want to deal with later.</p>
 <p>We continue this in this post. As a reminder we have our data loaded into R already:</p>
 <pre class="r"><code>library(tidyverse)
 df.prem16_17 &lt;- read_csv(file = &quot;E0.csv&quot;)</code></pre>
@@ -111,10 +111,10 @@ names(df.prem16_17.selected)</code></pre>
 <li>There are no missing values</li>
 <li>the variables are represented by appropriate data types</li>
 </ul>
-<p>If these two conditions are not met we need to be able to deal with them. It is worth noting now that particluarly the second point is dependant on what analysis we are performing. We will make a start on the process, but there may be times (there will be!!) where we need to go through further data transformation to be able to do what we would like……we will come to that</p>
+<p>If these two conditions are not met we need to be able to deal with them. It is worth noting now that the second point is dependant on what analysis we are performing.</p>
 <div id="checking-for-missing-values" class="section level1">
 <h1>Checking for missing values</h1>
-<p>There are a number of ways of explicitly doing this. Before that comes I like to run a single function which gives me an idea of what I am dealing with - it is also the first part of when we look at the data and some questions start being asked (and answered!):</p>
+<p>There are a number of ways to do this. Firstly, I like to run a single function which gives me an idea of what I am dealing with - it is also the first part of when we look at the data and some questions start being asked (and answered!):</p>
 <pre class="r"><code>summary(df.prem16_17.selected)</code></pre>
 <pre><code>##      Div                Date             HomeTeam        
 ##  Length:380         Length:380         Length:380        
@@ -161,11 +161,11 @@ names(df.prem16_17.selected)</code></pre>
 </div>
 <div id="the-summary-function" class="section level1">
 <h1>The summary() function</h1>
-<p>That is an awful lot of data! It si going to keep us busy for quite some time. At the first glance i am looking to see if there is anything that doesn’t look right in the data, specifically:</p>
+<p>That is an awful lot of data! It is going to keep us busy for quite some time. At the first glance i am looking to see if there is anything that doesn’t look right in the data, specifically:</p>
 <ul>
 <li>Are there any “NAs” at the botton of any of the columns - these represent missing values</li>
 <li>For the charachter variables is the “Length” the value that we expect? we know (from dim()) that there were 380 observations so we would expect Length to equal 380</li>
-<li>For the numeric variables are the mean and median close - this gives us insight into outliers, skewness and other measures that we will discuss on a variable by variable basis</li>
+<li>For the numeric variables are the mean and median close? This gives us insight into the possibility of any outliers, skewness and other measures</li>
 <li>Does it make sense that the variables have been assigned the datatypes they have? Should some of the numeric variables in fact be factors?</li>
 </ul>
 <p>We will answer all of these questions in the coming posts. For now we are happy that (from this look) there are no missing values. However, we can confirm this by using a graphical representation of our data:</p>
@@ -176,7 +176,8 @@ names(df.prem16_17.selected)</code></pre>
 <pre class="r"><code>library(Amelia)
 missmap(df.prem16_17.selected)</code></pre>
 <p><img src="/post/2017-11-21-england-premier-2016-17-ii-checking-the-data_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
-<p>The results of this are pretty conclusive in that they show no missing values. This was expected. However, there will be times when it doesn’t and there is further work required. For those that prefer a more programatic solution we can use the sapply() function to check the number of NA values in each column</p>
+<p>The results of this are pretty conclusive in that they show no missing values. This was expected. However, there will be times when it does show missing values and further work is required.</p>
+<p>For those that prefer a more programatic solution we can use the sapply() function to check the number of NA values in each column</p>
 </div>
 <div id="number-of-na-values-in-each-column---displayed-in-a-table" class="section level1">
 <h1>Number of NA values in each column - displayed in a table</h1>
@@ -188,6 +189,9 @@ missmap(df.prem16_17.selected)</code></pre>
 ##       AF       HC       AC       HY       AY       HR       AR 
 ##        0        0        0        0        0        0        0</code></pre>
 <p>This function uses an anonymous function as the second argument to saaply() and in doing so counts the number of NA values in each column. We then get a nice table showing us the result. Again, we can see no NA values are present.</p>
+</div>
+<div id="conclusion" class="section level1">
+<h1>Conclusion</h1>
 <p>What we have done so far is all very simple indeed. However, these are the function calls you will find yourself using every time you see a new data set. It is useful to try to commit them to memory.</p>
 </div>
 <div id="functions-used-in-this-section" class="section level1">

@@ -15,3 +15,22 @@ names(df.prem16_17)
 head(df.prem16_17)
 
 tail(df.prem16_17)
+
+## post two
+
+df.prem16_17.selected <- df.prem16_17 %>% select(1:23)
+names(df.prem16_17.selected)
+head(df.prem16_17.selected)
+
+summary(df.prem16_17.selected)
+
+library(Amelia)
+missmap(df.prem16_17.selected)
+
+sapply(df.prem16_17.selected, function(x) sum(is.na(x)))
+
+
+
+
+
+

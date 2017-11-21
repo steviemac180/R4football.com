@@ -17,7 +17,7 @@
       <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/11/21/england-premier-2016-17-ii-checking-the-data/</guid>
-      <description>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immedistely see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
+      <description>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immediately see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
 We continue this in this post. As a reminder we have our data loaded into R already:</description>
     </item>
     
