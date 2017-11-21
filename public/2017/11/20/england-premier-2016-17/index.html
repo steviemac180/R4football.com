@@ -69,13 +69,24 @@
     
 
     <div class="article-content">
-      <p>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk.</p>
+      <div id="welcome" class="section level1">
+<h1>Welcome</h1>
+<p>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk.</p>
 <p>The purpose is to reinforce a simple workflow to analyse data.</p>
 <p>Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it. Before we proceed any further, I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.</p>
+</div>
+<div id="loading-the-tidyverse" class="section level1">
+<h1>Loading the tidyverse</h1>
 <pre class="r"><code>library(tidyverse)</code></pre>
+</div>
+<div id="reading-in-the-data" class="section level1">
+<h1>Reading in the data</h1>
 <p>I then use the read_csv function from the readr package to load the dataset into my session. Note: the data must be within the same directory as the markdown document in order for it to be loaded in.</p>
 <pre class="r"><code>df.prem16_17 &lt;- read_csv(file = &quot;E0.csv&quot;)</code></pre>
-<p>Note I have named my new R object (containing the data for analysis) with the prefix df. This is with the assumption that the data is in fact in the form of a df. Using read_csv for our data loading ensures that this is the case - in fact it is a dataframe and a tibble - something that is very useful when using tidyverse packages and we can discuss later. We can check what form our data is in with a simple command</p>
+</div>
+<div id="having-a-look-at-the-data" class="section level1">
+<h1>Having a look at the data</h1>
+<p>Note I have named my new R object (containing the data for analysis) with the prefix df. This is with the assumption that the data is in fact in the form of a df. Using read_csv for our data loading ensures that this is the case - in fact it is a dataframe and a tibble - something that is very useful when using tidyverse packages and we can discuss later. We can check what form our data is in with a simple command.</p>
 <pre class="r"><code>class(df.prem16_17)</code></pre>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
 <p>Here we can see that our df.prem16_17 object is a tbl_df, tbl and dataframe. This is useful because we have functions in the tidyverse that will preferntially look for a tbl_df but allows us to still use other functions outwith the tidyverse that prefer (or only work on) R dataframes.</p>
@@ -158,6 +169,7 @@
 </ul>
 <p>Although this doesnt seem much it is a series of steps we will be taking EVERY time we start an anlysis in R.</p>
 <p>From what we have looked at it is clear there are a lot of variables in the data set we dont want/need. In our next steps we will look inot our data a bit more closely before “selecting” our variables to work with in our third post.</p>
+</div>
 <div id="functions-used-in-this-section" class="section level1">
 <h1>Functions used in this section:</h1>
 <ul>

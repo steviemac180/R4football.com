@@ -12,13 +12,13 @@
     
     
     <item>
-      <title>England Premier 2016/17 (II) - Checking the data</title>
+      <title>England Premier 2016/17 (II) - Checking our data</title>
       <link>/2017/11/21/england-premier-2016-17-ii-checking-the-data/</link>
       <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/11/21/england-premier-2016-17-ii-checking-the-data/</guid>
       <description>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immedistely see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
-We continue this in this post. Asa reminder we have our dat loaded into R already:</description>
+We continue this in this post. As a reminder we have our data loaded into R already:</description>
     </item>
     
     <item>
@@ -27,7 +27,7 @@ We continue this in this post. Asa reminder we have our dat loaded into R alread
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/11/20/england-premier-2016-17/</guid>
-      <description>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk.
+      <description>Welcome This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk.
 The purpose is to reinforce a simple workflow to analyse data.
 Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.</description>
     </item>

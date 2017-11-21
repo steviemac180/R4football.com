@@ -1,5 +1,5 @@
 ---
-title: "England Premier 2016/17 (II) - Checking the data"
+title: "England Premier 2016/17 (II) - Checking our data"
 author: "Stephen MacDonald"
 date: '2017-11-21'
 output:
@@ -13,16 +13,62 @@ categories:
 ---
 We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immedistely see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
 
-We continue this in this post. Asa reminder we have our dat loaded into R already:
+We continue this in this post. As a reminder we have our data loaded into R already:
 
 ```{r echo=TRUE, warning=FALSE, error=FALSE, message=FALSE}
 library(tidyverse)
 df.prem16_17 <- read_csv(file = "E0.csv")
 ```
 
+We already saw some of the datatypes of each of the variables by using the head() function. There are too many variables in our dataset. Many of them are not going to be analysed at the moment. Now is the time to reduce the columns we are looking at to simplify our R object for analysis. To do this we look at our variable names again using:
+
+```{r}
+names(df.prem16_17)
+```
+
+Variables 24 to 65 contain information about bookmakers odds. For the purposes of this analysis we wont be using that data. As such we can select only columns 1 to 23:
+
+```{r}
+df.prem16_17.selected <- df.prem16_17 %>% select(1:23)
+names(df.prem16_17.selected)
+head(df.prem16_17.selected)
+
+```
+
+We can see we have now reduced  our data set to 23 variables. It is these variables that we are going to look at over the next few (quite a few posts). Using this data we will get to grips with some exploratory data analysis first, which will cover plotting, some stats and lots of other fun things that we can look at from what is a relatively small data set. But before we do, we need to check that the variables conform to the following:
+
+* There are no missing values
+* the variables are represented by appropriate data types
+
+If these two conditions are not met we need to be able to deal with them. It is worth noting now that particluarly the second point is dependant on what analysis we are performing. We will make a start on the process, but there may be times (there will be!!) where we need to go through further data transformation to be able to do what we would like......we will come to that
+
+# Checking for missing values
+
+There are a number of ways of explicitly doing this. Before that comes I like to run a single function which gives me an idea of what I am dealing with - it is also the first part of when we look at the data and some questions start being asked (and answered!):
+
+```{r}
+summary(df.prem16_17.selected)
+```
+
+# The summary() function
+That is an awful lot of data! It si going to keep us busy for quite some time. At the first glance i am looking to see if there is anything that doesn't look right in the data, specifically:
+
+* Are there any "NAs" at the botton of any of the columns - these represent missing values
+* For the charachter variables is the "Length" the value that we expect? we know (from dim()) that there were 380 observations so we would expect Length to equal 380
+* For the numeric variables are the mean and median close - this gives us insight into outliers, skewness and other measures that we will discuss on a variable by variable basis
+* Does it make sense that the variables have been assigned the datatypes they have? Should some of the numeric variables in fact be factors?
+
+We will answer all of these questions in the coming posts. For now we are happy that (from this look) there are no missing values. However, we can confirm this by using a graphical representation of our data:
+
+# use the amelia package from the R course
+
+What we have done so far is all very simple indeed. However, these are the function calls you will find yourself using every time you see a new data set. It is useful to try to commit them to memory.
 
 
-functions to use:
-str()
-glimpse()
-summary()
+
+# Functions used in this section:
+* select ()
+* summary()
+* str()
+* glimpse()
+
