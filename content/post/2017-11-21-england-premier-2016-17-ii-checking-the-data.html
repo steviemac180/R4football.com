@@ -138,6 +138,8 @@ missmap(df.prem16_17.selected)</code></pre>
 <div id="conclusion" class="section level1">
 <h1>Conclusion</h1>
 <p>What we have done so far is all very simple indeed. However, these are the function calls you will find yourself using every time you see a new data set. It is useful to try to commit them to memory.</p>
+<p>We will end by writing our data to disk so we can use it in the next post.</p>
+<pre class="r"><code>write.csv(df.prem16_17.selected, file=&quot;E0_2.csv&quot;)</code></pre>
 </div>
 <div id="functions-used-in-this-section" class="section level1">
 <h1>Functions used in this section:</h1>
@@ -148,5 +150,6 @@ missmap(df.prem16_17.selected)</code></pre>
 <li>sapply()</li>
 <li>sum()</li>
 <li>is.na()</li>
+<li>write.csv()</li>
 </ul>
 </div>

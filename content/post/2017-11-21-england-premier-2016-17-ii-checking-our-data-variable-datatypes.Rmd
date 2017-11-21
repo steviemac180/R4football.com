@@ -1,0 +1,12 @@
+---
+title: England Premier 2016/17 (III) - Variable datatypes
+author: Stephen MacDonald
+date: '2017-11-21'
+slug: england-premier-2016-17-ii-checking-our-data-variable-datatypes
+categories:
+  - england
+  - premier league
+tags:
+  - exploratory analysis
+---
+
