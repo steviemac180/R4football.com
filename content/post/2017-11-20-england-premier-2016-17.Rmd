@@ -1,5 +1,5 @@
 ---
-title: England Premier 2016/17 Part One, loading data
+title: England Premier 2016/17 (I) - Loading the data
 author: Stephen MacDonald
 date: '2017-11-20'
 categories:
@@ -10,23 +10,64 @@ tags:
 slug: england-premier-2016-17
 ---
 
-This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk. Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.Before we proceed any further I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.
+This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk. 
+
+The purpose is to reinforce a simple workflow to analyse data.
+
+Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it. Before we proceed any further, I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.
 
 ```{r warning=FALSE, error=FALSE, message=FALSE}
 library(tidyverse)
 ```
-I then use the read_csv function from the readrpackge to load the dataset intomy session.Note: the data must be within the samedirectory asthe markdown document in orderfor it to be loaded in.
+I then use the read_csv function from the readr package to load the dataset into my session. Note: the data must be within the same directory as the markdown document in order for it to be loaded in.
 
 ```{r warning=FALSE, error=FALSE, message=FALSE}
 df.prem16_17 <- read_csv(file = "E0.csv")
 ```
-Note I have named my new R object (containing the data for analysis) with the prefix df. This is with the assumption that the data is in fact in the form of a df. Using read_csv for our data loading ensures that this is the case - in fact it is a dataframe and a tibble - something that is provided by the tidy verse and we can discuss later. We can check what form our data is in with a simple command
+Note I have named my new R object (containing the data for analysis) with the prefix df. This is with the assumption that the data is in fact in the form of a df. Using read_csv for our data loading ensures that this is the case - in fact it is a dataframe and a tibble - something that is very useful when using tidyverse packages and we can discuss later. We can check what form our data is in with a simple command
 
 ```{r}
 class(df.prem16_17)
 ```
+Here we can see that our df.prem16_17 object is a tbl_df, tbl and dataframe. This is useful because we have functions in the tidyverse that will preferntially look for a tbl_df but allows us to still use other functions outwith the tidyverse that prefer (or only work on) R dataframes.
+
+We can check the data is loaded in with the simple command which prints out the data in a tabular format in a separate pane in RStudio:
+
+```{r eval=FALSE}
+View(df.prem16_17)
+```
+It is worth knowing what size of data set we are looking at. We do this with the dim() function
+```{r}
+dim(df.prem16_17)
+```
+We have 380 observations (matches) and 65 variables with data about each of those matches.
+
+We can check what those variables are with:
+
+```{r}
+names(df.prem16_17)
+```
+This is very useful as we can look at an early stage to see if we need to consider any renaming of variables in R to avoid issues later on. It is a good idea to sort this out at the beginning. In our dataset, although some of the column names (variables) do not seem to be very clear what they are, there are only a couple that may cause issues further down the line (containing <) and we wont be using these so we are good to continue.
+
+Our final job before we move on to the next step is to have a quick overview of the data to see what we are actually dealing with. We already "Viewed" the data but the following three functions will gives us more information. Again it is important to do this at the beginning as it can, at an early stage, highlight any data cleaning that is necessary before we do the analysis.
+
+Firstly we will look at the first (in this case using the default) 6 records.
 
 ```{r}
 head(df.prem16_17)
+```
+
+and also the last 6:
+
+```{r}
+tail(df.prem16_17)
+```
+It is here that we can see some of the data PLUS the datatype of each variable. At this time we can see if there are any data types we may want to change in the future. We will come to that in the next post. Our next function str() - structure gives us some more information to the same end. Again, note the object being assigned as a tibble.
+
+```{r}
+str(df.prem16_17)
+```
+
+```{r}
 glimpse(df.prem16_17)
 ```

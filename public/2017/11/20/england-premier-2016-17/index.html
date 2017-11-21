@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.30.2" />
 
 
-<title>England Premier 2016/17 Part One, loading data - R4football</title>
-<meta property="og:title" content="England Premier 2016/17 Part One, loading data - R4football">
+<title>England Premier 2016/17 (I) - Loading the data - R4football</title>
+<meta property="og:title" content="England Premier 2016/17 (I) - Loading the data - R4football">
 
 
 
@@ -59,23 +59,48 @@
 
   <article class="article">
     
-    <span class="article-duration">7 min read</span>
+    <span class="article-duration">20 min read</span>
     
 
-    <h1 class="article-title">England Premier 2016/17 Part One, loading data</h1>
+    <h1 class="article-title">England Premier 2016/17 (I) - Loading the data</h1>
 
     
     <span class="article-date">2017/11/20</span>
     
 
     <div class="article-content">
-      <p>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk. Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.Before we proceed any further I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.</p>
+      <p>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk.</p>
+<p>The purpose is to reinforce a simple workflow to analyse data.</p>
+<p>Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it. Before we proceed any further, I will load the required packages from R into the session. The tidyverse package by Hadley Wickham is a work of art and will contain everything we need at this moment in time.</p>
 <pre class="r"><code>library(tidyverse)</code></pre>
-<p>I then use the read_csv function from the readrpackge to load the dataset intomy session.Note: the data must be within the samedirectory asthe markdown document in orderfor it to be loaded in.</p>
+<p>I then use the read_csv function from the readr package to load the dataset into my session. Note: the data must be within the same directory as the markdown document in order for it to be loaded in.</p>
 <pre class="r"><code>df.prem16_17 &lt;- read_csv(file = &quot;E0.csv&quot;)</code></pre>
-<p>Note I have named my new R object (containing the data for analysis) with the prefix df. This is with the assumption that the data is in fact in the form of a df. Using read_csv for our data loading ensures that this is the case - in fact it is a dataframe and a tibble - something that is provided by the tidy verse and we can discuss later. We can check what form our data is in with a simple command</p>
+<p>Note I have named my new R object (containing the data for analysis) with the prefix df. This is with the assumption that the data is in fact in the form of a df. Using read_csv for our data loading ensures that this is the case - in fact it is a dataframe and a tibble - something that is very useful when using tidyverse packages and we can discuss later. We can check what form our data is in with a simple command</p>
 <pre class="r"><code>class(df.prem16_17)</code></pre>
 <pre><code>## [1] &quot;tbl_df&quot;     &quot;tbl&quot;        &quot;data.frame&quot;</code></pre>
+<p>Here we can see that our df.prem16_17 object is a tbl_df, tbl and dataframe. This is useful because we have functions in the tidyverse that will preferntially look for a tbl_df but allows us to still use other functions outwith the tidyverse that prefer (or only work on) R dataframes.</p>
+<p>We can check the data is loaded in with the simple command which prints out the data in a tabular format in a separate pane in RStudio:</p>
+<pre class="r"><code>View(df.prem16_17)</code></pre>
+<p>It is worth knowing what size of data set we are looking at. We do this with the dim() function</p>
+<pre class="r"><code>dim(df.prem16_17)</code></pre>
+<pre><code>## [1] 380  65</code></pre>
+<p>We have 380 observations (matches) and 65 variables with data about each of those matches.</p>
+<p>We can check what those variables are with:</p>
+<pre class="r"><code>names(df.prem16_17)</code></pre>
+<pre><code>##  [1] &quot;Div&quot;      &quot;Date&quot;     &quot;HomeTeam&quot; &quot;AwayTeam&quot; &quot;FTHG&quot;     &quot;FTAG&quot;    
+##  [7] &quot;FTR&quot;      &quot;HTHG&quot;     &quot;HTAG&quot;     &quot;HTR&quot;      &quot;Referee&quot;  &quot;HS&quot;      
+## [13] &quot;AS&quot;       &quot;HST&quot;      &quot;AST&quot;      &quot;HF&quot;       &quot;AF&quot;       &quot;HC&quot;      
+## [19] &quot;AC&quot;       &quot;HY&quot;       &quot;AY&quot;       &quot;HR&quot;       &quot;AR&quot;       &quot;B365H&quot;   
+## [25] &quot;B365D&quot;    &quot;B365A&quot;    &quot;BWH&quot;      &quot;BWD&quot;      &quot;BWA&quot;      &quot;IWH&quot;     
+## [31] &quot;IWD&quot;      &quot;IWA&quot;      &quot;LBH&quot;      &quot;LBD&quot;      &quot;LBA&quot;      &quot;PSH&quot;     
+## [37] &quot;PSD&quot;      &quot;PSA&quot;      &quot;WHH&quot;      &quot;WHD&quot;      &quot;WHA&quot;      &quot;VCH&quot;     
+## [43] &quot;VCD&quot;      &quot;VCA&quot;      &quot;Bb1X2&quot;    &quot;BbMxH&quot;    &quot;BbAvH&quot;    &quot;BbMxD&quot;   
+## [49] &quot;BbAvD&quot;    &quot;BbMxA&quot;    &quot;BbAvA&quot;    &quot;BbOU&quot;     &quot;BbMx&gt;2.5&quot; &quot;BbAv&gt;2.5&quot;
+## [55] &quot;BbMx&lt;2.5&quot; &quot;BbAv&lt;2.5&quot; &quot;BbAH&quot;     &quot;BbAHh&quot;    &quot;BbMxAHH&quot;  &quot;BbAvAHH&quot; 
+## [61] &quot;BbMxAHA&quot;  &quot;BbAvAHA&quot;  &quot;PSCH&quot;     &quot;PSCD&quot;     &quot;PSCA&quot;</code></pre>
+<p>This is very useful as we can look at an early stage to see if we need to consider any renaming of variables in R to avoid issues later on. It is a good idea to sort this out at the beginning. In our dataset, although some of the column names (variables) do not seem to be very clear what they are, there are only a couple that may cause issues further down the line (containing &lt;) and we wont be using these so we are good to continue.</p>
+<p>Our final job before we move on to the next step is to have a quick overview of the data to see what we are actually dealing with. We already “Viewed” the data but the following three functions will gives us more information. Again it is important to do this at the beginning as it can, at an early stage, highlight any data cleaning that is necessary before we do the analysis.</p>
+<p>Firstly we will look at the first (in this case using the default) 6 records.</p>
 <pre class="r"><code>head(df.prem16_17)</code></pre>
 <pre><code>## # A tibble: 6 x 65
 ##     Div     Date       HomeTeam   AwayTeam  FTHG  FTAG   FTR  HTHG  HTAG
@@ -98,6 +123,232 @@
 ## #   `BbAv&lt;2.5` &lt;dbl&gt;, BbAH &lt;int&gt;, BbAHh &lt;dbl&gt;, BbMxAHH &lt;dbl&gt;,
 ## #   BbAvAHH &lt;dbl&gt;, BbMxAHA &lt;dbl&gt;, BbAvAHA &lt;dbl&gt;, PSCH &lt;dbl&gt;, PSCD &lt;dbl&gt;,
 ## #   PSCA &lt;dbl&gt;</code></pre>
+<p>and also the last 6:</p>
+<pre class="r"><code>tail(df.prem16_17)</code></pre>
+<pre><code>## # A tibble: 6 x 65
+##     Div     Date    HomeTeam       AwayTeam  FTHG  FTAG   FTR  HTHG  HTAG
+##   &lt;chr&gt;    &lt;chr&gt;       &lt;chr&gt;          &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt;
+## 1    E0 21/05/17   Leicester    Bournemouth     1     1     D     0     1
+## 2    E0 21/05/17   Liverpool  Middlesbrough     3     0     H     1     0
+## 3    E0 21/05/17  Man United Crystal Palace     2     0     H     2     0
+## 4    E0 21/05/17 Southampton          Stoke     0     1     A     0     0
+## 5    E0 21/05/17     Swansea      West Brom     2     1     H     0     1
+## 6    E0 21/05/17     Watford       Man City     0     5     A     0     4
+## # ... with 56 more variables: HTR &lt;chr&gt;, Referee &lt;chr&gt;, HS &lt;int&gt;,
+## #   AS &lt;int&gt;, HST &lt;int&gt;, AST &lt;int&gt;, HF &lt;int&gt;, AF &lt;int&gt;, HC &lt;int&gt;,
+## #   AC &lt;int&gt;, HY &lt;int&gt;, AY &lt;int&gt;, HR &lt;int&gt;, AR &lt;int&gt;, B365H &lt;dbl&gt;,
+## #   B365D &lt;dbl&gt;, B365A &lt;dbl&gt;, BWH &lt;dbl&gt;, BWD &lt;dbl&gt;, BWA &lt;dbl&gt;, IWH &lt;dbl&gt;,
+## #   IWD &lt;dbl&gt;, IWA &lt;dbl&gt;, LBH &lt;dbl&gt;, LBD &lt;dbl&gt;, LBA &lt;dbl&gt;, PSH &lt;dbl&gt;,
+## #   PSD &lt;dbl&gt;, PSA &lt;dbl&gt;, WHH &lt;dbl&gt;, WHD &lt;dbl&gt;, WHA &lt;dbl&gt;, VCH &lt;dbl&gt;,
+## #   VCD &lt;dbl&gt;, VCA &lt;dbl&gt;, Bb1X2 &lt;int&gt;, BbMxH &lt;dbl&gt;, BbAvH &lt;dbl&gt;,
+## #   BbMxD &lt;dbl&gt;, BbAvD &lt;dbl&gt;, BbMxA &lt;dbl&gt;, BbAvA &lt;dbl&gt;, BbOU &lt;int&gt;,
+## #   `BbMx&gt;2.5` &lt;dbl&gt;, `BbAv&gt;2.5` &lt;dbl&gt;, `BbMx&lt;2.5` &lt;dbl&gt;,
+## #   `BbAv&lt;2.5` &lt;dbl&gt;, BbAH &lt;int&gt;, BbAHh &lt;dbl&gt;, BbMxAHH &lt;dbl&gt;,
+## #   BbAvAHH &lt;dbl&gt;, BbMxAHA &lt;dbl&gt;, BbAvAHA &lt;dbl&gt;, PSCH &lt;dbl&gt;, PSCD &lt;dbl&gt;,
+## #   PSCA &lt;dbl&gt;</code></pre>
+<p>It is here that we can see some of the data PLUS the datatype of each variable. At this time we can see if there are any data types we may want to change in the future. We will come to that in the next post. Our next function str() - structure gives us some more information to the same end. Again, note the object being assigned as a tibble.</p>
+<pre class="r"><code>str(df.prem16_17)</code></pre>
+<pre><code>## Classes &#39;tbl_df&#39;, &#39;tbl&#39; and &#39;data.frame&#39;:    380 obs. of  65 variables:
+##  $ Div     : chr  &quot;E0&quot; &quot;E0&quot; &quot;E0&quot; &quot;E0&quot; ...
+##  $ Date    : chr  &quot;13/08/16&quot; &quot;13/08/16&quot; &quot;13/08/16&quot; &quot;13/08/16&quot; ...
+##  $ HomeTeam: chr  &quot;Burnley&quot; &quot;Crystal Palace&quot; &quot;Everton&quot; &quot;Hull&quot; ...
+##  $ AwayTeam: chr  &quot;Swansea&quot; &quot;West Brom&quot; &quot;Tottenham&quot; &quot;Leicester&quot; ...
+##  $ FTHG    : int  0 0 1 2 2 1 1 3 1 2 ...
+##  $ FTAG    : int  1 1 1 1 1 1 1 4 3 1 ...
+##  $ FTR     : chr  &quot;A&quot; &quot;A&quot; &quot;D&quot; &quot;H&quot; ...
+##  $ HTHG    : int  0 0 1 1 1 1 0 1 0 0 ...
+##  $ HTAG    : int  0 0 0 0 0 0 1 1 1 0 ...
+##  $ HTR     : chr  &quot;D&quot; &quot;D&quot; &quot;H&quot; &quot;H&quot; ...
+##  $ Referee : chr  &quot;J Moss&quot; &quot;C Pawson&quot; &quot;M Atkinson&quot; &quot;M Dean&quot; ...
+##  $ HS      : int  10 14 12 14 16 12 24 9 9 16 ...
+##  $ AS      : int  17 13 13 18 7 12 5 16 11 7 ...
+##  $ HST     : int  3 4 6 5 4 2 6 5 3 6 ...
+##  $ AST     : int  9 3 4 5 3 1 1 7 7 3 ...
+##  $ HF      : int  10 12 10 8 11 18 8 13 7 16 ...
+##  $ AF      : int  14 15 14 17 14 14 12 17 10 16 ...
+##  $ HC      : int  7 3 5 5 9 9 6 5 4 7 ...
+##  $ AC      : int  4 6 6 3 6 6 2 4 2 1 ...
+##  $ HY      : int  3 2 0 2 1 3 1 3 0 5 ...
+##  $ AY      : int  2 2 0 2 2 5 2 3 1 2 ...
+##  $ HR      : int  0 0 0 0 0 0 0 0 0 0 ...
+##  $ AR      : int  0 0 0 0 0 0 1 0 0 0 ...
+##  $ B365H   : num  2.4 2 3.2 4.5 1.25 2.38 1.8 2.4 4.75 1.65 ...
+##  $ B365D   : num  3.3 3.3 3.4 3.6 6.5 3.2 3.75 3.5 3.6 4 ...
+##  $ B365A   : num  3.25 4.5 2.4 1.91 15 3.4 5 3.1 1.85 6 ...
+##  $ BWH     : num  2.45 2 2.95 4.33 1.22 2.25 1.8 2.35 4.6 1.6 ...
+##  $ BWD     : num  3.1 3.2 3.2 3.4 6 3.1 3.4 3.3 3.5 3.75 ...
+##  $ BWA     : num  2.95 3.9 2.4 1.9 11.5 3.25 4.5 2.9 1.75 5.5 ...
+##  $ IWH     : num  2.5 2.1 2.65 3.3 1.25 2.3 1.8 2.3 4.5 1.65 ...
+##  $ IWD     : num  3.3 3.3 3.3 3.3 5.5 3.3 3.5 3.3 3.5 3.6 ...
+##  $ IWA     : num  2.65 3.3 2.5 2.1 10.3 2.9 4.2 2.9 1.75 5.1 ...
+##  $ LBH     : num  2.45 2 3.1 4.5 1.25 2.3 1.8 2.38 4.8 1.62 ...
+##  $ LBD     : num  3.25 3.25 3.4 3.5 6.5 3.2 3.6 3.4 3.6 4 ...
+##  $ LBA     : num  3.1 4.33 2.4 1.91 13 3.4 5 3.1 1.8 6 ...
+##  $ PSH     : num  2.47 2.06 3.25 4.43 1.27 2.33 1.88 2.41 4.7 1.68 ...
+##  $ PSD     : num  3.32 3.29 3.43 3.55 6.48 3.24 3.68 3.53 3.62 4.16 ...
+##  $ PSA     : num  3.19 4.32 2.37 1.95 13.15 ...
+##  $ WHH     : num  2.5 2.05 3.1 4.2 1.25 2.4 1.83 2.5 4.5 1.67 ...
+##  $ WHD     : num  3.2 3.1 3.1 3.25 5.5 3.1 3.4 3.1 3.4 3.6 ...
+##  $ WHA     : num  2.9 4 2.4 1.95 13 3.1 4.5 3 1.85 5.5 ...
+##  $ VCH     : num  2.5 2 3.25 4.4 1.25 2.38 1.83 2.4 4.75 1.65 ...
+##  $ VCD     : num  3.2 3.3 3.4 3.5 6.5 3.2 3.6 3.5 3.6 4.1 ...
+##  $ VCA     : num  3.25 4.4 2.38 1.95 15 3.4 5 3.1 1.87 5.75 ...
+##  $ Bb1X2   : int  55 56 55 55 56 56 56 55 55 52 ...
+##  $ BbMxH   : num  2.55 2.1 3.3 4.5 1.3 2.4 1.88 2.5 5 1.71 ...
+##  $ BbAvH   : num  2.43 2.01 3.12 4.17 1.25 2.31 1.82 2.36 4.5 1.64 ...
+##  $ BbMxD   : num  3.35 3.4 3.45 3.6 6.8 3.3 3.8 3.55 3.75 4.25 ...
+##  $ BbAvD   : num  3.21 3.23 3.32 3.43 6.11 3.16 3.56 3.42 3.51 3.97 ...
+##  $ BbMxA   : num  3.3 4.5 2.5 2.33 15 3.65 5 3.2 1.95 6 ...
+##  $ BbAvA   : num  3.1 4.16 2.36 1.95 12.55 ...
+##  $ BbOU    : int  40 38 41 40 39 38 42 42 42 40 ...
+##  $ BbMx&gt;2.5: num  2.4 2.68 2.12 2.3 1.56 2.61 2.13 1.98 2.11 1.97 ...
+##  $ BbAv&gt;2.5: num  2.3 2.5 2.05 2.19 1.53 2.46 2.06 1.81 2.05 1.8 ...
+##  $ BbMx&lt;2.5: num  1.68 1.6 1.87 1.74 2.67 1.57 1.83 2.09 1.87 2.09 ...
+##  $ BbAv&lt;2.5: num  1.61 1.52 1.77 1.67 2.48 1.53 1.75 1.99 1.76 2.01 ...
+##  $ BbAH    : int  32 33 32 31 34 32 33 31 33 33 ...
+##  $ BbAHh   : num  -0.25 -0.5 0.25 0.25 -1.5 -0.25 -0.75 -0.5 0.75 -1 ...
+##  $ BbMxAHH : num  2.13 2.07 1.91 2.35 1.81 1.99 2.16 2.41 1.8 2.2 ...
+##  $ BbAvAHH : num  2.06 2 1.85 2.26 1.73 1.93 2.07 2.31 1.76 2.1 ...
+##  $ BbMxAHA : num  1.86 1.9 2.09 2.03 2.2 1.97 1.89 1.81 2.17 1.8 ...
+##  $ BbAvAHA : num  1.81 1.85 2 1.67 2.14 1.92 1.8 1.64 2.11 1.76 ...
+##  $ PSCH    : num  2.79 2.25 3.64 4.68 1.25 2.2 1.8 2.8 5.4 1.52 ...
+##  $ PSCD    : num  3.16 3.15 3.54 3.5 6.5 3.38 3.83 3.44 3.65 4.38 ...
+##  $ PSCA    : num  2.89 3.86 2.16 1.92 14.5 3.7 4.91 2.68 1.78 7.45 ...
+##  - attr(*, &quot;spec&quot;)=List of 2
+##   ..$ cols   :List of 65
+##   .. ..$ Div     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ Date    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ HomeTeam: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ AwayTeam: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ FTHG    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ FTAG    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ FTR     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ HTHG    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HTAG    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HTR     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ Referee : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_character&quot; &quot;collector&quot;
+##   .. ..$ HS      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ AS      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HST     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ AST     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HF      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ AF      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HC      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ AC      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HY      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ AY      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ HR      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ AR      : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ B365H   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ B365D   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ B365A   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BWH     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BWD     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BWA     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ IWH     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ IWD     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ IWA     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ LBH     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ LBD     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ LBA     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ PSH     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ PSD     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ PSA     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ WHH     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ WHD     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ WHA     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ VCH     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ VCD     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ VCA     : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ Bb1X2   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ BbMxH   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAvH   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbMxD   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAvD   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbMxA   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAvA   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbOU    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ BbMx&gt;2.5: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAv&gt;2.5: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbMx&lt;2.5: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAv&lt;2.5: list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAH    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_integer&quot; &quot;collector&quot;
+##   .. ..$ BbAHh   : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbMxAHH : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAvAHH : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbMxAHA : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ BbAvAHA : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ PSCH    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ PSCD    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   .. ..$ PSCA    : list()
+##   .. .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_double&quot; &quot;collector&quot;
+##   ..$ default: list()
+##   .. ..- attr(*, &quot;class&quot;)= chr  &quot;collector_guess&quot; &quot;collector&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;col_spec&quot;</code></pre>
 <pre class="r"><code>glimpse(df.prem16_17)</code></pre>
 <pre><code>## Observations: 380
 ## Variables: 65

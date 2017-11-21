@@ -12,12 +12,14 @@
     
     
     <item>
-      <title>England Premier 2016/17 Part One, loading data</title>
+      <title>England Premier 2016/17 (I) - Loading the data</title>
       <link>/2017/11/20/england-premier-2016-17/</link>
       <pubDate>Mon, 20 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>/2017/11/20/england-premier-2016-17/</guid>
-      <description>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk. Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.Before we proceed any further I will load the required packages from R into the session.</description>
+      <description>This is the first post on this site actually dealing with looking at football data. The data used is freely available from football-data.co.uk.
+The purpose is to reinforce a simple workflow to analyse data.
+Having downloaded the data I will first load it into R and have the full data set loaded into my environment.The first few steps will be getting a feel for the data and what is contained within it.</description>
     </item>
     
     <item>
