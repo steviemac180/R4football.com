@@ -62,16 +62,16 @@ and also the last 6:
 ```{r}
 tail(df.prem16_17)
 ```
-It is here that we can see some of the data PLUS the datatype of each variable. At this time we can see if there are any data types we may want to change in the future. We will come to that in the next post. Our next function str() - structure gives us some more information to the same end. Again, note the object being assigned as a tibble.
+It is here that we can see some of the data PLUS the datatype of each variable. At this time we can see if there are any data types we may want to change in the future. Again, note the object being assigned as a tibble.
 
-That concludes our simple intorduction into analysing football data in R. What have we achieved?
+That concludes our simple introduction into analysing football data in R. What have we achieved?
 
-Loaded the data into R
-Assigned it to an R object we can work with in the future
-Checked to see the class of our object
-Checked the dimensions of our object
-Had a look to see what the variable names in our object are
-Checked the top, and bottom, 6 records to get a feel of the data
+* Loaded the data into R
+* Assigned it to an R object we can work with in the future
+* Checked to see the class of our object
+* Checked the dimensions of our object
+* Had a look to see what the variable names in our object are
+* Checked the top, and bottom, 6 records to get a feel of the data
 
 Although this doesnt seem much it is a series of steps we will be taking EVRY time we start an anlysis in R.
 
