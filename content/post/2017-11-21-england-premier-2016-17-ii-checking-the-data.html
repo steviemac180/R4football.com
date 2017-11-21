@@ -115,8 +115,24 @@ names(df.prem16_17.selected)</code></pre>
 </ul>
 <p>We will answer all of these questions in the coming posts. For now we are happy that (from this look) there are no missing values. However, we can confirm this by using a graphical representation of our data:</p>
 </div>
-<div id="use-the-amelia-package-from-the-r-course" class="section level1">
-<h1>use the amelia package from the R course</h1>
+<div id="a-graphical-representation-of-missing-data" class="section level1">
+<h1>A graphical representation of missing data</h1>
+<p>The fantastic Amelia package makes it incredibly simple to check for missing values. It simply represents the whole data set showing missing values for each variable and observation. First we load the library and then use the missmap() function from within the package to draw a missingness map. If any values are missing they will be displayed as yellow lines. All data that is present is red.</p>
+<pre class="r"><code>library(Amelia)
+missmap(df.prem16_17.selected)</code></pre>
+<p><img src="/post/2017-11-21-england-premier-2016-17-ii-checking-the-data_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>The results of this are pretty conclusive in that they show no missing values. This was expected. However, there will be times when it doesn’t and there is further work required. For those that prefer a more programatic solution we can use the sapply() function to check the number of NA values in each column</p>
+</div>
+<div id="number-of-na-values-in-each-column---displayed-in-a-table" class="section level1">
+<h1>Number of NA values in each column - displayed in a table</h1>
+<pre class="r"><code>sapply(df.prem16_17.selected, function(x) sum(is.na(x)))</code></pre>
+<pre><code>##      Div     Date HomeTeam AwayTeam     FTHG     FTAG      FTR     HTHG 
+##        0        0        0        0        0        0        0        0 
+##     HTAG      HTR  Referee       HS       AS      HST      AST       HF 
+##        0        0        0        0        0        0        0        0 
+##       AF       HC       AC       HY       AY       HR       AR 
+##        0        0        0        0        0        0        0</code></pre>
+<p>This function uses an anonymous function as the second argument to saaply() and in doing so counts the number of NA values in each column. We then get a nice table showing us the result. Again, we can see no NA values are present.</p>
 <p>What we have done so far is all very simple indeed. However, these are the function calls you will find yourself using every time you see a new data set. It is useful to try to commit them to memory.</p>
 </div>
 <div id="functions-used-in-this-section" class="section level1">
@@ -124,7 +140,9 @@ names(df.prem16_17.selected)</code></pre>
 <ul>
 <li>select ()</li>
 <li>summary()</li>
-<li>str()</li>
-<li>glimpse()</li>
+<li>missmap()</li>
+<li>sapply()</li>
+<li>sum()</li>
+<li>is.na()</li>
 </ul>
 </div>
