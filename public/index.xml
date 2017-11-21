@@ -38,7 +38,7 @@ Having downloaded the data I will first load it into R and have the full data se
       <pubDate>Thu, 05 May 2016 21:48:51 -0700</pubDate>
       
       <guid>/about/</guid>
-      <description>This is a website for made using the wonderful blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.
+      <description>This is a website made using the wonderful blogdown package. The theme was forked from @jrutheiser/hugo-lithium-theme and modified by Yihui Xie.
 The purpose of the website is to show a methodical process for analysing a commonly available dataset relating to football (soccer) using the R language.
 All analysis is performed using R and displayed in rmarkdown via the blogdown package above.
 I hope the content provides useful for readers, it certainly is for me building it</description>
