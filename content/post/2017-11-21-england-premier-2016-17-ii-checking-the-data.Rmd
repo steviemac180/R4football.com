@@ -19,3 +19,10 @@ We continue this in this post. Asa reminder we have our dat loaded into R alread
 library(tidyverse)
 df.prem16_17 <- read_csv(file = "E0.csv")
 ```
+
+
+
+functions to use:
+str()
+glimpse()
+summary()
