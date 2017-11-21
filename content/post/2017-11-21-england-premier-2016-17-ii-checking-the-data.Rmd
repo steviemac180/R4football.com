@@ -1,0 +1,21 @@
+---
+title: "England Premier 2016/17 (II) - Checking the data"
+author: "Stephen MacDonald"
+date: '2017-11-21'
+output:
+  html_document:
+    df_print: paged
+slug: england-premier-2016-17-ii-checking-the-data
+tags: exploratory analysis
+categories:
+- england
+- premier league
+---
+We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immedistely see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
+
+We continue this in this post. Asa reminder we have our dat loaded into R already:
+
+```{r echo=TRUE, warning=FALSE, error=FALSE, message=FALSE}
+library(tidyverse)
+df.prem16_17 <- read_csv(file = "E0.csv")
+```

@@ -6,10 +6,20 @@
     <description>Recent content in Posts on R4football</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 21 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>England Premier 2016/17 (II) - Checking the data</title>
+      <link>/2017/11/21/england-premier-2016-17-ii-checking-the-data/</link>
+      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/11/21/england-premier-2016-17-ii-checking-the-data/</guid>
+      <description>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immedistely see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
+We continue this in this post. Asa reminder we have our dat loaded into R already:</description>
+    </item>
     
     <item>
       <title>England Premier 2016/17 (I) - Loading the data</title>
