@@ -1,8 +1,8 @@
 ---
-title: England Premier 2016/17 (III) - Variable datatypes
+title: England Premier 2016/17 (III) - Reviewing the data
 author: Stephen MacDonald
 date: '2017-11-21'
-slug: england-premier-2016-17-iii-checking-our-data-variable-datatypes
+slug: england-premier-2016-17-iii-creviewing-the-data
 categories:
   - england
   - premier league
