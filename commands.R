@@ -29,6 +29,14 @@ missmap(df.prem16_17.selected)
 
 sapply(df.prem16_17.selected, function(x) sum(is.na(x)))
 
+# post three
+install.packages("devtools")
+devtools::install_github(sicarul/xray)
+library(xray)
+xray::anomalies()
+xray::distributions()
+
+# post four
 
 
 
