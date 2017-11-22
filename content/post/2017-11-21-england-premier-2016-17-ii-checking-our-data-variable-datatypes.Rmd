@@ -1,12 +1,50 @@
 ---
-title: England Premier 2016/17 (III) - Reviewing the data
-author: Stephen MacDonald
-date: '2017-11-21'
-slug: england-premier-2016-17-iii-creviewing-the-data
+title: "England Premier 2016/17 (III) - Reviewing the data"
+author: "Stephen MacDonald"
+date: '2017-11-22'
+slug: england-premier-2016-17-iii-reviewing-the-data
+tags: exploratory analysis
 categories:
-  - england
-  - premier league
-tags:
-  - exploratory analysis
+- england
+- premier league
 ---
+```{r echo=FALSE, warning=FALSE, error=FALSE, message=FALSE}
+library(tidyverse)
+df.prem16_17 <- read_csv(file = "E0.csv")
+df.prem16_17.selected <- df.prem16_17 %>% select(1:23)
+```
+We were going to move straight into looking at our variables but this morning i got a notification from [rbloggers](https://www.r-bloggers.com/) with the latest R related posts including [this one](https://www.r-bloggers.com/xray-the-r-package-to-have-x-ray-vision-on-your-datasets/) for a new package to do exactly what we were doing previously but in a different way. I decided to play about with our data with it. The goal is still to determine if we have any missing data, but with the xray package we can also do a bit more.
 
+After installation (see linked article) run:
+
+```{r}
+library(xray)
+```
+
+which will give us access to the xray functions
+
+# Check for missing values and values that we don't want..
+Use the xray::anomalies() function to look at our dataset as below:
+
+```{r}
+xray::anomalies(df.prem16_17.selected)
+```
+
+The output immediately alerts us to 3 potential problems in our data. We will look at this first
+
+#1. AR - Away red cards, HR - Home red cards
+This tells us we have 360 of our 380 observations as 0. This is not surprising as games don't often have red cards so we accept this finding as being a feature of our data.
+
+#2. Div - Division
+This shows that there is only 1 distinct value throughut the entire variable describing the division. As we know this dataset to only be the English Premier League we are again happy with this. 
+
+We can, as before, see that we have no NA values.
+
+# A Brief look at distributions
+We looked at our data briefly using the summary() function. We can again look at it using the xray package using the distributions() function.  It leads nicely into what we are going to  do next - investigating summary statistics of each variable.
+
+```{r eval=FALSE, echo=TRUE, warning=FALSE, error=FALSE, message=FALSE}
+xray::distributions(df.prem16_17.selected)
+```
+
+I haven't shown the output here as it provides a lot of detailed information and i will do this individually for each variable in our data set starting with the dreaded "Date" variable......

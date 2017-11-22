@@ -1,17 +1,75 @@
----
-title: "England Premier 2016/17 (III) - Reviewing the data"
-author: "Stephen MacDonald"
-date: '2017-11-22'
-slug: england-premier-2016-17-iii-reviewing-the-data
-tags: exploratory analysis
-categories:
-- england
-- premier league
----
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.30.2" />
+
+
+<title>England Premier 2016/17 (III) - Reviewing the data - R4football</title>
+<meta property="og:title" content="England Premier 2016/17 (III) - Reviewing the data - R4football">
 
 
 
-<p>We were going to move straight into looking at our variables but this morning i got a notification from <a href="https://www.r-bloggers.com/">rbloggers</a> with the latest R related posts including <a href="https://www.r-bloggers.com/xray-the-r-package-to-have-x-ray-vision-on-your-datasets/">this one</a> for a new package to do exactly what we were doing previously but in a different way. I decided to play about with our data with it. The goal is still to determine if we have any missing data, but with the xray package we can also do a bit more.</p>
+  
+
+
+
+
+
+
+
+
+<link href='//cdn.bootcss.com/highlight.js/9.11.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/steviemac180">GitHub</a></li>
+    
+    <li><a href="https://twitter.com/steviemac180">Twitter</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">4 min read</span>
+    
+
+    <h1 class="article-title">England Premier 2016/17 (III) - Reviewing the data</h1>
+
+    
+    <span class="article-date">2017/11/21</span>
+    
+
+    <div class="article-content">
+      <p>We were going to move straight into looking at our variables but this morning i got a notification from <a href="https://www.r-bloggers.com/">rbloggers</a> with the latest R related posts including <a href="https://www.r-bloggers.com/xray-the-r-package-to-have-x-ray-vision-on-your-datasets/">this one</a> for a new package to do exactly what we were doing previously but in a different way. I decided to play about with our data with it. The goal is still to determine if we have any missing data, but with the xray package we can also do a bit more.</p>
 <p>After installation (see linked article) run:</p>
 <pre class="r"><code>library(xray)</code></pre>
 <p>which will give us access to the xray functions</p>
@@ -93,7 +151,48 @@ categories:
 </div>
 <div id="a-brief-look-at-distributions" class="section level1">
 <h1>A Brief look at distributions</h1>
-<p>We looked at our data briefly using the summary() function. We can again look at it using the xray package using the distributions() function. It leads nicely into what we are going to do next - investigating summary statistics of each variable.</p>
+<p>We looked at our data briefly using the summary() function. We can again look at it using the xray package using the distributions() function. Unfortunately due to the (&gt;10) number of levels in some of our variables they aren’t fully graphed. However, it leads nicely into what we are going to do next - investigating summary statistics of each variable.</p>
 <pre class="r"><code>xray::distributions(df.prem16_17.selected)</code></pre>
 <p>I haven’t shown the output here as it provides a lot of detailed information and i will do this individually for each variable in our data set starting with the dreaded “Date” variable……</p>
 </div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/highlight.min.js"></script>
+
+
+
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/r.min.js"></script>
+<script src="//cdn.bootcss.com/highlight.js/9.11.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+

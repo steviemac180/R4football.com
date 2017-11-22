@@ -6,10 +6,19 @@
     <description>Recent content on R4football</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 21 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>England Premier 2016/17 (III) - Reviewing the data</title>
+      <link>/2017/11/22/england-premier-2016-17-iii-reviewing-the-data/</link>
+      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/11/22/england-premier-2016-17-iii-reviewing-the-data/</guid>
+      <description>We were going to move straight into looking at our variables but this morning i got a notification from rbloggers with the latest R related posts including this one for a new package to do exactly what we were doing previously but in a different way. I decided to play about with our data with it. The goal is still to determine if we have any missing data, but with the xray package we can also do a bit more.</description>
+    </item>
     
     <item>
       <title>England Premier 2016/17 (II) - Checking our data</title>
@@ -19,15 +28,6 @@
       <guid>/2017/11/21/england-premier-2016-17-ii-checking-the-data/</guid>
       <description>We got to the stage of checking our data in the last post by looking at the top 6 and bottom 6 entries of our 380 observations. This is useful because we can immediately see if there is anything untoward going on, or if there is anything we think we may want to deal with later.
 We continue this in this post. As a reminder we have our data loaded into R already:</description>
-    </item>
-    
-    <item>
-      <title>England Premier 2016/17 (III) - Reviewing the data</title>
-      <link>/2017/11/21/england-premier-2016-17-iii-creviewing-the-data/</link>
-      <pubDate>Tue, 21 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/11/21/england-premier-2016-17-iii-creviewing-the-data/</guid>
-      <description></description>
     </item>
     
     <item>
