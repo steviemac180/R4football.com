@@ -6,10 +6,19 @@
     <description>Recent content in Posts on R4football</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 22 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 23 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>England Premier 2016/17 (IV) - The Date variable</title>
+      <link>/2017/11/23/england-premier-league-2016-17-iv-the-date-variable/</link>
+      <pubDate>Thu, 23 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>/2017/11/23/england-premier-league-2016-17-iv-the-date-variable/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>England Premier 2016/17 (III) - Reviewing the data</title>
@@ -18,15 +27,6 @@
       
       <guid>/2017/11/22/england-premier-2016-17-iii-reviewing-the-data/</guid>
       <description>We were going to move straight into looking at our variables but this morning i got a notification from rbloggers with the latest R related posts including this one for a new package to do exactly what we were doing previously but in a different way. I decided to play about with our data with it. The goal is still to determine if we have any missing data, but with the xray package we can also do a bit more.</description>
-    </item>
-    
-    <item>
-      <title>England Premier 2016/17 (IV) Date Variable</title>
-      <link>/2017/11/22/england-premier-2016-17-iv-date-variable/</link>
-      <pubDate>Wed, 22 Nov 2017 00:00:00 +0000</pubDate>
-      
-      <guid>/2017/11/22/england-premier-2016-17-iv-date-variable/</guid>
-      <description></description>
     </item>
     
     <item>

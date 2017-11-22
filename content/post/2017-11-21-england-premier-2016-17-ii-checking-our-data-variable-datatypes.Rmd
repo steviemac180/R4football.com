@@ -48,3 +48,10 @@ xray::distributions(df.prem16_17.selected)
 ```
 
 I haven't shown the output here as it provides a lot of detailed information and i will do this individually for each variable in our data set starting with the dreaded "Date" variable......
+
+# Functions used in this section
+* install.packages("devtools")
+* devtools::install_github(sicarul/xray)
+* library(xray)
+* xray::anomalies()
+* xray::distributions()
